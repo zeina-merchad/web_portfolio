@@ -1,153 +1,157 @@
-import { Project, Paper, BlogPost, Skill } from './types';
+import { Project, Paper, BlogPost, Skill } from "./types";
 
 export const personalInfo = {
-  name: 'Your Name',
-  title: 'Software Engineer & Researcher',
-  tagline: 'Building thoughtful systems at the intersection of engineering and ideas.',
-  bio: `I'm a software engineer with a focus on distributed systems and applied machine learning.
-I enjoy writing about what I build and researching what I don't yet understand.
-Currently based in Beirut, Lebanon.`,
-  email: 'hello@yourname.com',
-  github: 'https://github.com/yourname',
-  linkedin: 'https://linkedin.com/in/yourname',
-  twitter: 'https://twitter.com/yourname',
+  name: "Zeina Merchad",
+  title: "Software Engineer & Researcher",
+  tagline:
+    "Building thoughtful systems at the intersection of engineering and ideas.",
+  bio: `I'm a computer science graduate from the Lebanese American University, Beirut.
+I work across full-stack web development, mobile apps, and theoretical CS research.
+My published work focuses on graph algorithms and parameterized complexity — finding elegant solutions to hard combinatorial problems.
+Outside of research, I build with React, .NET MAUI, WinForms, and C#, and I write about the things I learn along the way.`,
+  email: "ZeinaMerchad@outlook.com",
+  github: "https://github.com/zeina-merchad",
+  linkedin: "https://www.linkedin.com/in/zeina-merchad-b51720262/",
+  twitter: "https://x.com/zeinamerch",
 };
 
 export const projects: Project[] = [
   {
-    id: 'p1',
-    title: 'Distributed Task Scheduler',
-    description: 'A fault-tolerant, horizontally scalable task scheduler built with Raft consensus. Handles millions of scheduled jobs with sub-second latency and zero message loss.',
-    tags: ['Go', 'Raft', 'Distributed Systems', 'Redis'],
-    year: 2024,
-    github: '#',
-    link: '#',
+    id: "p1",
+    title: "Voltlearn",
+    description:
+      "A course platform for learning circuit design and analysis. Users can subscribe to courses and complete quizzes, while admins can create and manage courses, quizzes, and users.",
+    tags: ["HTML", "CSS", "JavaScript", "Web Development"],
+    year: 2025,
+    featured: true,
+    github: "", // ← paste your GitHub repo URL here
+    link: "", // ← paste your live site URL here
+    image: "", // ← paste an image URL or use '/images/voltlearn.png'
+  },
+  {
+    id: "p2",
+    title: "Khadamati",
+    description:
+      "A services marketplace mobile app where users can browse and subscribe to services, providers can register their offerings, and admins moderate the platform.",
+    tags: ["Java", "Mobile Development", "Android"],
+    year: 2025,
     featured: true,
   },
   {
-    id: 'p2',
-    title: 'Neural Code Reviewer',
-    description: 'An LLM-powered GitHub Action that reviews PRs for security vulnerabilities, performance anti-patterns, and style inconsistencies. Integrates with 20+ repos in production.',
-    tags: ['TypeScript', 'LLMs', 'GitHub Actions', 'AST Analysis'],
+    id: "p3",
+    title: "Optimizing GCNs with CUDA Acceleration",
+    description:
+      "Accelerated Graph Convolutional Network computations using CUDA and parallel GPU processing. Addressed scalability challenges in node classification, link prediction, and graph classification tasks.",
+    tags: [
+      "CUDA",
+      "Parallel Programming",
+      "Deep Learning",
+      "Graph Neural Networks",
+    ],
+    year: 2025,
+  },
+  {
+    id: "p4",
+    title: "Node Classification in the Cora Dataset",
+    description:
+      "Implemented and compared multiple GNN architectures — GCN, GAT, and Jumping Knowledge — for classifying academic papers in the Cora citation network. Included feature extraction, edge mapping, and model interpretability analysis.",
+    tags: ["Python", "PyTorch", "GNN", "Machine Learning"],
     year: 2024,
-    github: '#',
-    featured: true,
   },
   {
-    id: 'p3',
-    title: 'Open-Source CLI Toolkit',
-    description: 'A collection of developer productivity tools for working with large codebases — fast grep, semantic search, and intelligent file navigation.',
-    tags: ['Rust', 'CLI', 'Tree-sitter', 'Open Source'],
-    year: 2023,
-    github: '#',
-    link: '#',
-  },
-  {
-    id: 'p4',
-    title: 'Real-time Collaborative Editor',
-    description: 'A CRDT-based collaborative text editor supporting offline-first edits with eventual consistency. Built as an exploration of operational transformation vs. CRDTs.',
-    tags: ['React', 'CRDTs', 'WebSockets', 'TypeScript'],
-    year: 2023,
-    github: '#',
-  },
-  {
-    id: 'p5',
-    title: 'Packet Tracer Visualizer',
-    description: 'An interactive web tool to visualize network packet flows, latency heatmaps, and congestion points in real-time from pcap captures.',
-    tags: ['Python', 'D3.js', 'Network Analysis', 'Flask'],
-    year: 2022,
-    github: '#',
-    link: '#',
+    id: "p5",
+    title: "HZA Messenger",
+    description:
+      "A chat application built for a computer networking course. Implemented messaging over UDP with a custom reliability layer, file transfer over TCP, and tested under simulated poor network conditions using Linux Netem.",
+    tags: ["TCP", "UDP", "Networking", "Linux", "C"],
+    year: 2024,
   },
 ];
 
 export const papers: Paper[] = [
   {
-    id: 'r1',
-    title: 'Adaptive Consensus Protocols for Heterogeneous Network Conditions',
-    abstract: 'We propose AdaptRaft, an extension to the Raft consensus algorithm that dynamically adjusts heartbeat intervals and election timeouts based on observed network jitter. Evaluation on WAN deployments shows 34% lower tail latency compared to vanilla Raft.',
-    venue: 'USENIX NSDI 2024',
-    year: 2024,
-    authors: ['Your Name', 'Co-Author A', 'Co-Author B'],
-    link: '#',
-    tags: ['Distributed Systems', 'Consensus', 'Networking'],
+    id: "r1",
+    title: "Bicluster Editing with Overlaps: A Vertex Splitting Approach",
+    abstract:
+      "The BiCluster Editing problem aims at editing a given bipartite graph into a disjoint union of bicliques via a minimum number of edge deletion or addition operations. We introduce BCEVS and BCEOVS, two variants that allow data elements to belong to more than one cluster via vertex splitting. We prove both problems are NP-complete on bipartite planar graphs of maximum degree three, establish APX-hardness, and show polynomial-time solvability on trees. BCEOVS is additionally shown to be fixed parameter tractable and admits a polynomial size kernel.",
+    venue: "IWOCA 2025",
+    year: 2025,
+    authors: ["Faisal N. Abu-Khzam", "Lucas Isenmann", "Zeina Merchad"],
+    link: "https://link.springer.com/chapter/10.1007/978-3-031-98740-3_11",
+    tags: [
+      "Graph Theory",
+      "Parameterized Complexity",
+      "Biclustering",
+      "NP-completeness",
+    ],
   },
-  {
-    id: 'r2',
-    title: 'Semantic Code Search at Scale: A Comparative Study',
-    abstract: 'A systematic comparison of embedding-based, AST-based, and hybrid approaches to semantic code search across 50 open-source repositories. We identify key failure modes and propose a benchmark suite for the community.',
-    venue: 'ICSE 2023',
-    year: 2023,
-    authors: ['Your Name', 'Co-Author C'],
-    link: '#',
-    tags: ['Program Analysis', 'Machine Learning', 'Code Search'],
-  },
-  {
-    id: 'r3',
-    title: 'Memory-Efficient Fine-Tuning of Large Language Models',
-    abstract: 'We introduce GradSlice, a gradient checkpointing strategy combined with mixed-precision training that reduces GPU memory usage by 41% with less than 2% throughput degradation on transformer models up to 13B parameters.',
-    venue: 'NeurIPS Workshop 2023',
-    year: 2023,
-    authors: ['Your Name', 'Co-Author D', 'Co-Author E'],
-    link: '#',
-    tags: ['LLMs', 'Deep Learning', 'Efficiency'],
-  },
+  // add more papers here
 ];
 
 export const blogPosts: BlogPost[] = [
   {
-    id: 'b1',
-    title: 'Why I rewrote our background job system in Rust',
-    excerpt: 'After three years of fighting memory leaks and GC pauses in our Go-based job queue, I decided to rewrite the hot path in Rust. Here\'s what I learned — and what surprised me.',
-    date: 'March 2024',
-    readTime: 9,
-    tags: ['Rust', 'Systems', 'Engineering'],
-    link: '#',
-  },
-  {
-    id: 'b2',
-    title: 'The quiet power of boring architecture',
-    excerpt: 'Not every system needs a Kafka cluster or a service mesh. A meditation on the virtue of choosing the dullest tool that gets the job done — and knowing when to reach for something more.',
-    date: 'January 2024',
-    readTime: 6,
-    tags: ['Architecture', 'Opinion'],
-    link: '#',
-  },
-  {
-    id: 'b3',
-    title: 'CRDTs explained without the math',
-    excerpt: 'Conflict-free Replicated Data Types sound intimidating, but the core idea is elegant and surprisingly approachable. A visual walkthrough of how they work and when to use them.',
-    date: 'November 2023',
-    readTime: 12,
-    tags: ['Distributed Systems', 'Deep Dive'],
-    link: '#',
-  },
-  {
-    id: 'b4',
-    title: 'On reading papers as a working engineer',
-    excerpt: 'I used to find research papers impenetrable. Then I changed how I read them. A practical guide to getting value from academic CS papers without a PhD.',
-    date: 'September 2023',
-    readTime: 7,
-    tags: ['Learning', 'Research', 'Career'],
-    link: '#',
+    id: "b1",
+    title: "The paralysis of infinite doors",
+    excerpt:
+      "Nobody tells you that graduating feels less like a beginning and more like standing in a hallway with a hundred unlocked doors. Every choice feels like a permanent closing of all the others, and so you stand there, frozen, choosing nothing.",
+    date: "April 2025",
+    readTime: 5,
+    slug: "the-paralysis-of-infinite-doors",
+    tags: ["Life", "Career", "Reflection"],
+    content: `
+Nobody tells you that graduating feels less like a beginning and more like standing in a hallway with a hundred unlocked doors.
+
+You spent years working toward this moment. Grinding through assignments, exams, projects, late nights fueled by bad coffee and mild panic. Everyone around you — professors, parents, relatives at dinner parties — kept pointing at some imaginary finish line just ahead. *Just get through this semester. Just get your degree. Then it all opens up.*
+
+And then it does. And somehow that's the problem.
+
+The options are real. You could go into industry, chase a research career, do a master's, move cities, freelance, join a startup, join a corporation, build something of your own. Every path seems equally valid and equally terrifying. You scroll job listings at midnight not because you're applying, but because you're hoping one of them will reach through the screen and tell you *this one, this is the one*.
+
+It doesn't.
+
+What nobody prepares you for is that freedom and anxiety are the same coin. When someone else sets the structure — a syllabus, a semester, a graduation requirement — your job is just to move forward. The track exists. You run on it. But the moment the track ends, you realize forward is a direction you have to invent yourself, and inventing it requires knowing who you are and what you actually want. Two things that four years of coursework somehow never formally addressed.
+
+I've talked to enough people my age to know this isn't just me. The high-achievers are somehow the most paralyzed — because they've spent so long optimizing for external validation that the absence of a rubric feels like a void. What does it mean to do well at life? There's no grade. There's no professor to ask.
+
+Here's what I keep coming back to: the doors don't close when you walk through one. That's the lie anxiety tells you. Choosing a first job doesn't forfeit a research career forever. Moving to one city doesn't chain you there. Most paths are more reversible than they feel at 22, standing in that hallway with your heart in your throat.
+
+The paralysis isn't really about the doors. It's about the terrifying, exhilarating realization that you are, for the first time, the one holding the key.
+
+That's not a problem to solve. That's just what growing up actually feels like.
+    `,
   },
 ];
 
 export const skills: Skill[] = [
   {
-    category: 'Languages',
-    items: ['TypeScript', 'Go', 'Rust', 'Python', 'C++'],
+    category: "Languages",
+    items: ["C#", "Python", "C", "C++", "TypeScript", "JavaScript"],
   },
   {
-    category: 'Systems',
-    items: ['Distributed Systems', 'Linux', 'Networking', 'Databases', 'Compilers'],
+    category: "Frameworks & UI",
+    items: ["React", ".NET MAUI", "WinForms", "Tailwind CSS", "Node.js"],
   },
   {
-    category: 'Web & Cloud',
-    items: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'AWS', 'Kubernetes', 'Docker'],
+    category: "Theory & Algorithms",
+    items: [
+      "Graph Theory",
+      "Parameterized Complexity",
+      "Algorithm Design",
+      "Computational Complexity",
+      "NP-hardness Proofs",
+      "Kernelization",
+    ],
   },
   {
-    category: 'Research & ML',
-    items: ['PyTorch', 'LLMs', 'Program Analysis', 'Benchmarking', 'Academic Writing'],
+    category: "Research & Tools",
+    items: [
+      "Academic Writing",
+      "LaTeX",
+      "Combinatorial Algorithms",
+      "Biclustering",
+      "Fixed Parameter Tractability",
+      "Git",
+      "GitHub",
+    ],
   },
 ];

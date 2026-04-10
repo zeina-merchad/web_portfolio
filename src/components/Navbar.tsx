@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
           href="/#"
           className="font-display text-lg font-semibold text-ink-900 tracking-tight hover:text-accent transition-colors"
         >
-          YN
+          Zeina Merchad
         </a>
 
         {/* Desktop nav */}

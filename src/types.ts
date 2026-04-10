@@ -7,6 +7,7 @@ export interface Project {
   link?: string;
   github?: string;
   featured?: boolean;
+  image?: string; // ← image URL or local path
 }
 
 export interface Paper {
@@ -28,6 +29,8 @@ export interface BlogPost {
   readTime: number;
   tags: string[];
   link?: string;
+  slug: string; // ← URL-friendly identifier
+  content?: string; // ← full article content
 }
 
 export interface Skill {

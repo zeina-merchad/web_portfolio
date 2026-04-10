@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { blogPosts } from "../data";
 
 const Writing: React.FC = () => {
@@ -14,19 +15,13 @@ const Writing: React.FC = () => {
               From the blog
             </h2>
           </div>
-          <a
-            href="/#"
-            className="font-mono text-xs text-ink-500 hover:text-accent transition-colors"
-          >
-            All posts →
-          </a>
         </div>
 
         <div className="grid md:grid-cols-2 gap-px bg-ink-200 border border-ink-200">
           {blogPosts.map((post) => (
-            <a
+            <Link
               key={post.id}
-              href={post.link || "#"}
+              to={`/blog/${post.slug}`}
               className="group bg-white p-6 flex flex-col gap-3 hover:bg-ink-50 transition-colors"
             >
               <div className="flex items-center gap-3">
@@ -54,7 +49,7 @@ const Writing: React.FC = () => {
                   </span>
                 ))}
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
