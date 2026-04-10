@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const NAV_ITEMS = [
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Research', href: '#research' },
-  { label: 'Writing', href: '#writing' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Research", href: "#research" },
+  { label: "Writing", href: "#writing" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [active, setActive] = useState('');
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-      const sections = NAV_ITEMS.map(i => i.href.slice(1));
+      const sections = NAV_ITEMS.map((i) => i.href.slice(1));
       for (const id of [...sections].reverse()) {
         const el = document.getElementById(id);
         if (el && window.scrollY >= el.offsetTop - 100) {
@@ -26,19 +26,19 @@ const Navbar: React.FC = () => {
         }
       }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-ink-50/95 backdrop-blur border-b border-ink-200' : ''
+        scrolled ? "bg-ink-50/95 backdrop-blur border-b border-ink-200" : ""
       }`}
     >
       <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
         <a
-          href="#"
+          href="/#"
           className="font-display text-lg font-semibold text-ink-900 tracking-tight hover:text-accent transition-colors"
         >
           YN
@@ -52,8 +52,8 @@ const Navbar: React.FC = () => {
               href={href}
               className={`text-sm font-body transition-colors ${
                 active === href.slice(1)
-                  ? 'text-accent font-medium'
-                  : 'text-ink-600 hover:text-ink-900'
+                  ? "text-accent font-medium"
+                  : "text-ink-600 hover:text-ink-900"
               }`}
             >
               {label}
@@ -67,9 +67,15 @@ const Navbar: React.FC = () => {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <span className={`block w-5 h-0.5 bg-ink-800 transition-transform ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-          <span className={`block w-5 h-0.5 bg-ink-800 transition-opacity ${menuOpen ? 'opacity-0' : ''}`} />
-          <span className={`block w-5 h-0.5 bg-ink-800 transition-transform ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          <span
+            className={`block w-5 h-0.5 bg-ink-800 transition-transform ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
+          />
+          <span
+            className={`block w-5 h-0.5 bg-ink-800 transition-opacity ${menuOpen ? "opacity-0" : ""}`}
+          />
+          <span
+            className={`block w-5 h-0.5 bg-ink-800 transition-transform ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`}
+          />
         </button>
       </div>
 
