@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { personalInfo } from "../data";
 
+type FormState = "idle" | "loading" | "success" | "error";
+
 const Contact: React.FC = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<FormState>("idle");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -14,26 +16,35 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.MouseEvent) => {
     e.preventDefault();
 
-    const response = await fetch("https://formspree.io/f/xyzabcde", {
-      // ← your endpoint
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: form.name,
-        email: form.email,
-        message: form.message,
-      }),
-    });
+    // Basic validation
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setStatus("error");
+      return;
+    }
 
-    if (response.ok) {
-      setSent(true);
+    setStatus("loading");
+
+    try {
+      const response = await fetch("https://formspree.io/f/xyzabcde", { // ← your endpoint
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
     }
   };
 
   const socialLinks = [
     { label: "GitHub", href: personalInfo.github },
     { label: "LinkedIn", href: personalInfo.linkedin },
-    { label: "Twitter / X", href: personalInfo.twitter },
     { label: "Email", href: `mailto:${personalInfo.email}` },
   ];
 
@@ -52,10 +63,9 @@ const Contact: React.FC = () => {
               Open to interesting problems, collaborations, and conversations. I
               try to reply within a few days.
             </p>
-
             <div className="space-y-3">
               {socialLinks.map(({ label, href }) => (
-                <a
+
                   key={label}
                   href={href}
                   target="_blank"
@@ -70,17 +80,10 @@ const Contact: React.FC = () => {
           </div>
 
           <div className="md:col-span-2">
-            {sent ? (
+            {status === "success" ? (
               <div className="border border-ink-200 p-10 flex flex-col items-center justify-center text-center gap-3 h-full min-h-64">
                 <div className="w-10 h-10 border-2 border-accent flex items-center justify-center">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#C9622F"
-                    strokeWidth="2.5"
-                  >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9622F" strokeWidth="2.5">
                     <polyline points="20,6 9,17 4,12" />
                   </svg>
                 </div>
@@ -91,10 +94,7 @@ const Contact: React.FC = () => {
                   Thanks for reaching out — I'll be in touch.
                 </p>
                 <button
-                  onClick={() => {
-                    setSent(false);
-                    setForm({ name: "", email: "", message: "" });
-                  }}
+                  onClick={() => setStatus("idle")}
                   className="font-mono text-xs text-ink-400 hover:text-accent mt-2 transition-colors"
                 >
                   Send another
@@ -102,6 +102,15 @@ const Contact: React.FC = () => {
               </div>
             ) : (
               <div className="space-y-4">
+                {/* Empty fields error */}
+                {status === "error" && (
+                  <div className="bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+                    {!form.name.trim() || !form.email.trim() || !form.message.trim()
+                      ? "Please fill in all fields before sending."
+                      : "Something went wrong. Please try again or email me directly."}
+                  </div>
+                )}
+
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="font-mono text-xs text-ink-500 uppercase tracking-widest block mb-2">
@@ -145,9 +154,10 @@ const Contact: React.FC = () => {
                 </div>
                 <button
                   onClick={handleSubmit}
-                  className="w-full bg-accent text-white py-3 text-sm font-medium hover:bg-accent-dark transition-colors"
+                  disabled={status === "loading"}
+                  className="w-full bg-accent text-white py-3 text-sm font-medium hover:bg-accent-dark transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send message
+                  {status === "loading" ? "Sending..." : "Send message"}
                 </button>
               </div>
             )}
