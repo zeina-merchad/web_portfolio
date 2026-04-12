@@ -8,7 +8,7 @@ const Contact: React.FC = () => {
   const [status, setStatus] = useState<FormState>("idle");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -25,7 +25,8 @@ const Contact: React.FC = () => {
     setStatus("loading");
 
     try {
-      const response = await fetch("https://formspree.io/f/xyzabcde", { // ← your endpoint
+      const response = await fetch("https://formspree.io/f/xzdyppnr", {
+        // ← your endpoint
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -65,7 +66,7 @@ const Contact: React.FC = () => {
             </p>
             <div className="space-y-3">
               {socialLinks.map(({ label, href }) => (
-
+                <a
                   key={label}
                   href={href}
                   target="_blank"
@@ -83,7 +84,14 @@ const Contact: React.FC = () => {
             {status === "success" ? (
               <div className="border border-ink-200 p-10 flex flex-col items-center justify-center text-center gap-3 h-full min-h-64">
                 <div className="w-10 h-10 border-2 border-accent flex items-center justify-center">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9622F" strokeWidth="2.5">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#C9622F"
+                    strokeWidth="2.5"
+                  >
                     <polyline points="20,6 9,17 4,12" />
                   </svg>
                 </div>
@@ -105,7 +113,9 @@ const Contact: React.FC = () => {
                 {/* Empty fields error */}
                 {status === "error" && (
                   <div className="bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
-                    {!form.name.trim() || !form.email.trim() || !form.message.trim()
+                    {!form.name.trim() ||
+                    !form.email.trim() ||
+                    !form.message.trim()
                       ? "Please fill in all fields before sending."
                       : "Something went wrong. Please try again or email me directly."}
                   </div>
